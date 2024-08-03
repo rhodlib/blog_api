@@ -37,6 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # 3rd party
+    'rest_framework',
+    'corsheaders',
     # Local
     'accounts.apps.AccountsConfig',
     'posts.apps.PostsConfig',
@@ -45,6 +48,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -127,4 +131,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL  = 'accounts.CustomUser'
 
-CSRF_TRUSTED_ORIGINS = ["https://8000-idx-blogapi-1722713930399.cluster-qhrn7lb3szcfcud6uanedbkjnm.cloudworkstations.dev"]
+CSRF_TRUSTED_ORIGINS = ["https://8000-idx-blogapi-1722713930399.cluster-qhrn7lb3szcfcud6uanedbkjnm.cloudworkstations.dev", "localhost:3000"]
+
+CORS_ORIGIN_WHITELIST = (
+    "http://localhost:3000",
+    "http://localhost:8000",
+)
+
+REST_FRAMEWORK = {
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.AllowAny",
+    ]
+}
