@@ -131,7 +131,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL  = 'accounts.CustomUser'
 
-CSRF_TRUSTED_ORIGINS = ["https://8000-idx-blogapi-1722713930399.cluster-qhrn7lb3szcfcud6uanedbkjnm.cloudworkstations.dev", "localhost:3000"]
+CSRF_TRUSTED_ORIGINS = ["https://8000-idx-blogapi-1722713930399.cluster-qhrn7lb3szcfcud6uanedbkjnm.cloudworkstations.dev", "http://localhost:3000"]
 
 CORS_ORIGIN_WHITELIST = (
     "http://localhost:3000",
@@ -140,6 +140,6 @@ CORS_ORIGIN_WHITELIST = (
 
 REST_FRAMEWORK = {
     "DEFAULT_PERMISSION_CLASSES": [
-        "rest_framework.permissions.AllowAny",
+        "rest_framework.permissions.IsAuthenticated",
     ]
 }
